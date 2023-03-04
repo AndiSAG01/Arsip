@@ -15,6 +15,12 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id');
+            $table->string('code');
+            $table->string('name');
+            $table->string('slug');
+            $table->longText('description');
+            $table->string('file');
             $table->timestamps();
         });
     }

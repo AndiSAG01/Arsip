@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Document;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -33,5 +34,6 @@ class DatabaseSeeder extends Seeder
         ]);
         User::factory(20)->create();
         Category::factory(5)->create();
+        Document::factory(5)->create();
     }
 }

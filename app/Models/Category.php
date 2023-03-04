@@ -12,4 +12,14 @@ class Category extends Model
     protected $fillable = [
         'name','slug',
     ];
+
+    /**
+     * Get all of the documents for the Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
 }

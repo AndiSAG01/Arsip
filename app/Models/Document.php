@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Document extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'category_id', 'name', 'code', 'description', 'file', 'slug'
+    ];
+
+    /**
+     * Get the category that owns the Document
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
