@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use ZipArchive;
 
 class DocumentController extends Controller
 {
@@ -41,14 +42,21 @@ class DocumentController extends Controller
 
     function edit($slug)
     {
-        return view('dicument.update', [
-            'document' => document::whereSlug($slug)->first()
+        return view('document.update', [
+            'document' => document::whereSlug($slug)->first(),
+            'category' => Category::get(),
         ]);
     }
 
-    function update($slug, Request $request)
+    function update($id, Request $request)
     {
-        $document = Document::whereSlug($slug);
+        $request->validate([
+            'category_id' => 'integer|required', 
+            'name' => 'string|required|min:5', 
+            'code' => 'string|required|min:6', 
+            'description' => 'string|min:5|required', 
+        ]);
+        $document = Document::find($id);
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $fileName = time() . '_' . $file->getClientOriginalName();
@@ -57,7 +65,7 @@ class DocumentController extends Controller
             Storage::disk('public')->delete($document->file);
             $document->file = $filePath;
         }
-            $document->category_id = $request->category_i;
+            $document->category_id = $request->category_id;
             $document->name = $request->name;
             $document->code = $request->code;
             $document->description = $request->description;
@@ -79,7 +87,35 @@ class DocumentController extends Controller
     function download($slug){
         $file = Document::whereSlug($slug)->first()->file;
         return response()->download($file);
+    }
 
-        // return Storage::download($file);
+    function backup()
+    {
+        $storagePath = storage_path('app/public');
+    $zipFileName = 'backup-' . date('Y-m-d') . '.zip';
+    $zipFilePath = storage_path($zipFileName);
+
+    // Create new zip archive
+    $zip = new ZipArchive();
+    if ($zip->open($zipFilePath, ZipArchive::CREATE) !== true) {
+        return response()->json(['message' => 'Failed to create backup zip file.']);
+    }
+
+    // Get all files in storage directory
+    $files = Storage::allFiles();
+
+    // Add all files to zip archive
+    foreach ($files as $file) {
+        $filePath = $storagePath . '/' . $file;
+        if (file_exists($filePath)) {
+            $zip->addFile($filePath, $file);
+        }
+    }
+
+    // Close the zip file
+    $zip->close();
+
+    // Download the zip file
+    return response()->download($zipFilePath, $zipFileName);
     }
 }

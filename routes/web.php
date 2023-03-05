@@ -46,6 +46,8 @@ Route::delete('/category/{slug}', [CategoryController::class, 'destroy']);
 route::get('/document', [DocumentController::class, 'index']);
 route::post('/document', [DocumentController::class, 'store']);
 Route::get('/document/{slug}/edit', [DocumentController::class, 'edit']);
-Route::put('/document/{slug}', [DocumentController::class, 'update']);
+Route::put('/document/{id}', [DocumentController::class, 'update']);
 Route::delete('/document/{slug}', [DocumentController::class, 'destroy']);
 Route::get('/document/{slug}/download', [DocumentController::class, 'download']);
+
+Route::get('/backup', [DocumentController::class, 'backup']);

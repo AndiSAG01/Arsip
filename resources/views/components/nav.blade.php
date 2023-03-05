@@ -43,6 +43,13 @@
             </a>
         </li>
 
+        <li class="sidebar-item">
+            <a href="/backup" class='sidebar-link'>
+                <i class="bi bi-grid-fill"></i>
+                <span>Backup dokumen</span>
+            </a>
+        </li>
+
 
         <li class="sidebar-item  has-sub">
             <a href="#" class="sidebar-link">
