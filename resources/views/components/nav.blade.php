@@ -27,9 +27,11 @@
                 <li class="submenu-item ">
                     <a href="/admin">Petugas</a>
                 </li>
+                @if (Auth::user()->isAdmin == true)
                 <li class="submenu-item ">
                     <a href="/superadmin">Kepala</a>
                 </li>
+                @endif
                 <li class="submenu-item ">
                     <a href="/category">Jenis Dokumen</a>
                 </li>
