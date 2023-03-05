@@ -67,11 +67,13 @@
                             <td>{{ $item->birthday }}</td>
                             <td>
                                 <div class="d-inline-flex gap-3">
-                                    <a href="/superadmin/{{ $item->slug }}/edit" class="btn btn-sm btn-warning">Ubah</a>
+                                    <a href="/superadmin/{{ $item->slug }}/edit" class="btn btn-sm btn-warning"><i class="bi bi-pencil-square"></i>
+Ubah</a>
                                     <form action="/superadmin/{{$item->slug}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                        <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i>
+Hapus</button>
                                     </form>
                                 </div>
                             </td>

@@ -91,7 +91,7 @@ class DocumentController extends Controller
 
     function backup()
     {
-        $storagePath = storage_path('app/public');
+        $storagePath = storage_path('app');
     $zipFileName = 'backup-' . date('Y-m-d') . '.zip';
     $zipFilePath = storage_path($zipFileName);
 

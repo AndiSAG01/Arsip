@@ -5,7 +5,7 @@
         @if (Route::has('login'))
             <li class="sidebar-item">
                 <a href="{{ route('login') }}" class='sidebar-link'>
-                    <i class="bi bi-grid-fill"></i>
+                    <i class="bi bi-door-open"></i>
                     <span>Login</span>
                 </a>
             </li>
@@ -38,14 +38,14 @@
 
         <li class="sidebar-item">
             <a href="/document" class='sidebar-link'>
-                <i class="bi bi-grid-fill"></i>
+                <i class="bi bi-collection"></i>
                 <span>Dokumen</span>
             </a>
         </li>
 
         <li class="sidebar-item">
             <a href="/backup" class='sidebar-link'>
-                <i class="bi bi-grid-fill"></i>
+                <i class="bi bi-layer-backward"></i>
                 <span>Backup dokumen</span>
             </a>
         </li>
@@ -53,15 +53,15 @@
 
         <li class="sidebar-item  has-sub">
             <a href="#" class="sidebar-link">
-                <i class="bi bi-grid-1x2-fill"></i>
+                <i class="bi bi-calendar2"></i>
                 <span>Laporan</span>
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
-                    <a href="">User</a>
+                    <a href="/reportUser">Petugas</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="">Dokumen</a>
+                    <a href="/reportDocument">Dokumen</a>
                 </li>
             </ul>
         </li>
@@ -71,8 +71,7 @@
                 onclick="event.preventDefault();
             document.getElementById('logout-form').submit();"
                 class='sidebar-link'>
-                <i class="bi bi-grid-fill"></i>
-                <span>Logout</span>
+                <i class="bi bi-door-closed"></i>                <span>Logout</span>
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf

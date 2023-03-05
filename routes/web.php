@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SupUserController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -49,5 +50,7 @@ Route::get('/document/{slug}/edit', [DocumentController::class, 'edit']);
 Route::put('/document/{id}', [DocumentController::class, 'update']);
 Route::delete('/document/{slug}', [DocumentController::class, 'destroy']);
 Route::get('/document/{slug}/download', [DocumentController::class, 'download']);
-
 Route::get('/backup', [DocumentController::class, 'backup']);
+
+Route::get('reportUser', [ReportController::class, 'index']);
+Route::get('reportDocument', [ReportController::class, 'document']);
