@@ -48,3 +48,4 @@ route::post('/document', [DocumentController::class, 'store']);
 Route::get('/document/{slug}/edit', [DocumentController::class, 'edit']);
 Route::put('/document/{slug}', [DocumentController::class, 'update']);
 Route::delete('/document/{slug}', [DocumentController::class, 'destroy']);
+Route::get('/document/{slug}/download', [DocumentController::class, 'download']);

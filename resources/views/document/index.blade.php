@@ -65,6 +65,7 @@
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                                     </form>
+                                    <a href="/document/{{ $item->slug }}/download" class="btn btn-success">Download</a>
                                 </div>
                             </td>
                         </tr>

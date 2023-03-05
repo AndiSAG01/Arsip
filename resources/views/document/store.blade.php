@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <h3 class="text-center">Tambah dokumen baru</h3>
                 <hr>
-                <form action="/document" method="post">
+                <form action="/document" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="row">
@@ -20,9 +20,9 @@
                                 <label for="category_id">Jenis dokumen</label>
                                 <select class="form-select form-select" name="category_id" id="category_id">
                                     <option selected value="">Pilih satu janis dokumen</option>
-
-                                    <option value=""></option>
-
+                                    @foreach ($category as $item)
+                                    <option value="{{$item->id}}">{{ $item->name}}</option>
+                                    @endforeach
                                 </select>
                                 @error('category_id')
                                     <small class="text-danger">{{ $message }}</small>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="file">File dokumen</label>
-                                <input type="file" class="form-control" value="{{ old('file') }}" name="file"
+                                <input type="file" class="form-control" name="file"
                                     id="file">
                                 @error('file')
                                     <small class="text-danger">{{ $message }}</small>

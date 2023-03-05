@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DocumentRequest;
+use App\Models\Category;
 use App\Models\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class DocumentController extends Controller
@@ -14,6 +16,7 @@ class DocumentController extends Controller
     function index()
     {
         return view('document.index', [
+            'category' => Category::get(),
             'documents' => Document::latest()->get()
         ]);
     }
@@ -21,16 +24,15 @@ class DocumentController extends Controller
     function store(DocumentRequest $request)
     {
         $file = $request->file('file');
-        $extention = $file->getClientOriginalExtension();
-        $filename = time().'.'.$extention;
-        $file->move('uploads/file-document/', $filename);
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $filePath = $file->storeAs('documents', $fileName, 'public');
 
         Document::insert([
             'category_id' => $request->category_id,
             'name' => $request->name, 
             'code' => $request->code, 
             'description' => $request->description, 
-            'file' => $filename, 
+            'file' => $filePath, 
             'slug' => Str::slug($request->name)
         ]);
 
@@ -47,19 +49,13 @@ class DocumentController extends Controller
     function update($slug, Request $request)
     {
         $document = Document::whereSlug($slug);
-        if($request->hasfile('file'))
-        {
-
-            $destination = 'uploads/file-document/'.$document->file;
-            if(File::exists($destination))
-            {
-                File::delete($destination);
-            }
+        if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extention;
-            $file->move('uploads/file-document/', $filename);
-            $document->file = $filename;
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('documents', $fileName, 'public');
+    
+            Storage::disk('public')->delete($document->file);
+            $document->file = $filePath;
         }
             $document->category_id = $request->category_i;
             $document->name = $request->name;
@@ -68,13 +64,22 @@ class DocumentController extends Controller
             $document->slug = Str::slug($request->name);
             $document->save();
 
-        return redirect('dicument')->with('success', 'Dokumen telah diubah 👍');
+        return redirect('document')->with('success', 'Dokumen telah diubah 👍');
     }
 
     function destroy($slug)
     {
+        $file = Document::whereSlug($slug)->first()->file;
+        Storage::disk('public')->delete($file);
         Document::whereSlug($slug)->delete();
 
         return back()->with('success', 'Dokumen telah dihapus');
+    }
+
+    function download($slug){
+        $file = Document::whereSlug($slug)->first()->file;
+        return response()->download($file);
+
+        // return Storage::download($file);
     }
 }
