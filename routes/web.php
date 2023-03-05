@@ -19,13 +19,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 route::get('/admin', [UserController::class, 'index']);
 route::post('/admin', [UserController::class, 'store']);
 Route::get('/admin/{slug}/edit', [UserController::class, 'edit']);
