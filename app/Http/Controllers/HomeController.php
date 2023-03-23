@@ -46,7 +46,7 @@ class HomeController extends Controller
             ];
         }
 
-        $chart = (new LarapexChart)->setTitle('Documents by Category')
+        $chart = (new LarapexChart)
            ->setType('pie')->setWidth(500)
            ->setLabels(array_column($chartData, 'label'))
            ->setDataset(array_column($chartData, 'data'));
