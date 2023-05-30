@@ -12,7 +12,7 @@
         @endif
     @else
         <li class="sidebar-item">
-            <a href="/home" class='sidebar-link'>
+            <a href="/" class='sidebar-link'>
                 <i class="bi bi-grid-fill"></i>
                 <span>Dashboard</span>
             </a>
@@ -32,18 +32,23 @@
                     <a href="/superadmin">Kepala</a>
                 </li>
                 @endif
+            </ul>
+        </li>
+        <li class="sidebar-item  has-sub">
+            <a href="#" class="sidebar-link">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Arsip</span>
+            </a>
+            <ul class="submenu ">
                 <li class="submenu-item ">
                     <a href="/category">Jenis Dokumen</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="/document">Data Dokumen</a>
                 </li>
             </ul>
         </li>
 
-        <li class="sidebar-item">
-            <a href="/document" class='sidebar-link'>
-                <i class="bi bi-collection"></i>
-                <span>Dokumen</span>
-            </a>
-        </li>
 
         <li class="sidebar-item">
             <a href="/backup" class='sidebar-link'>

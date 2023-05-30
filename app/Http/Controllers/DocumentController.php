@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 use ZipArchive;
 
 class DocumentController extends Controller
@@ -85,13 +86,24 @@ class DocumentController extends Controller
     }
 
     function download($slug){
-        $file = Document::whereSlug($slug)->first()->file;
-        return response()->download($file);
+        $document = Document::whereSlug($slug)->first();
+    
+        if (!$document) {
+            throw new FileNotFoundException("The file does not exist.");
+        }
+    
+        $filePath = storage_path('app/public/' . $document->file);
+    
+        if (!file_exists($filePath)) {
+            throw new FileNotFoundException("The file does not exist.");
+        }
+    
+        return response()->download($filePath);
     }
 
     function backup()
     {
-        $storagePath = storage_path('app');
+    $storagePath = storage_path('app/public/');
     $zipFileName = 'backup-' . date('Y-m-d') . '.zip';
     $zipFilePath = storage_path($zipFileName);
 

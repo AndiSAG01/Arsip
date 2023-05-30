@@ -19,18 +19,34 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::insert([
-            'name' => 'Administrator',
-            'slug' => str::slug('administrator'),
-            'email' => 'testing@testing.com',
+           [
+            'name' => 'kepala',
+            'slug' => str::slug('kepala'),
+            'email' => 'kepala@example.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('testing'), // password
+            'password' => Hash::make('password'), // password
             'remember_token' => Str::random(10),
             'nik' => 1234567890,
             'nip' => 1234567890,
             'address' => 'Jambi'.str::random(20),
             'telp' => 1234567890,
             'birthday' => now()->subYear(),
-            'isAdmin' => 1,
+            'isAdmin' => 1
+        ],
+        [
+            'name' => 'petugas',
+            'slug' => str::slug('petugas'),
+            'email' => 'petugas@example.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'), // password
+            'remember_token' => Str::random(10),
+            'nik' => 1234567891,
+            'nip' => 1234567891,
+            'address' => 'Jambi'.str::random(20),
+            'telp' => 1234567891,
+            'birthday' => now()->subYear(),
+            'isAdmin' => 0
+        ]
         ]);
         User::factory(20)->create();
         Category::factory(5)->create();

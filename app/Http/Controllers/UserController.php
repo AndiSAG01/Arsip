@@ -43,6 +43,8 @@ class UserController extends Controller
 
     public function update(Request $request, $slug)
     {
+        // dd($request->all());
+        
         $request->validate([
             'email' => 'required|string|email|max:255',
             'nik' => 'required|min:16',
@@ -52,15 +54,21 @@ class UserController extends Controller
             'telp' => 'required|numeric|digits_between:11,12',
             'birthday' => 'required|date_format:Y-m-d',
         ]);
-        
 
+        $user = User::whereSlug($slug)->first();
+        if (!empty($request->password)) {
+            $password = Hash::make($request->password);
+        } else {
+            $password = $user->password;
+        }
+        
         user::whereSlug($slug)->update([
             'nik' => $request->nik,
             'nip' => $request->nip,
             'slug' => Str::slug($request->name),
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make('password'),
+            'password' => $password,
             'address' => $request->address,
             'telp' => $request->telp,
             'birthday' => $request->birthday,
