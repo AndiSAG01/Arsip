@@ -29,12 +29,12 @@ class DocumentController extends Controller
         $fileName = time() . '_' . $file->getClientOriginalName();
         $filePath = $file->storeAs('documents', $fileName, 'public');
 
-        Document::insert([
+        Document::create([
             'category_id' => $request->category_id,
-            'name' => $request->name, 
-            'code' => $request->code, 
-            'description' => $request->description, 
-            'file' => $filePath, 
+            'name' => $request->name,
+            'code' => $request->code,
+            'description' => $request->description,
+            'file' => $filePath,
             'slug' => Str::slug($request->name)
         ]);
 
@@ -43,6 +43,7 @@ class DocumentController extends Controller
 
     function edit($slug)
     {
+
         return view('document.update', [
             'document' => document::whereSlug($slug)->first(),
             'category' => Category::get(),
@@ -52,17 +53,17 @@ class DocumentController extends Controller
     function update($id, Request $request)
     {
         $request->validate([
-            'category_id' => 'integer|required', 
-            'name' => 'string|required|min:5', 
-            'code' => 'string|required|min:6', 
-            'description' => 'string|min:5|required', 
+            'category_id' => 'integer|required',
+            'name' => 'string|required|min:5',
+            'code' => 'string|required|min:6',
+            'description' => 'string|min:5|required',
         ]);
         $document = Document::find($id);
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('documents', $fileName, 'public');
-    
+
             Storage::disk('public')->delete($document->file);
             $document->file = $filePath;
         }
@@ -87,47 +88,47 @@ class DocumentController extends Controller
 
     function download($slug){
         $document = Document::whereSlug($slug)->first();
-    
+
         if (!$document) {
             throw new FileNotFoundException("The file does not exist.");
         }
-    
+
         $filePath = storage_path('app/public/' . $document->file);
-    
+
         if (!file_exists($filePath)) {
             throw new FileNotFoundException("The file does not exist.");
         }
-    
+
         return response()->download($filePath);
     }
 
     function backup()
     {
-    $storagePath = storage_path('app/public/');
-    $zipFileName = 'backup-' . date('Y-m-d') . '.zip';
-    $zipFilePath = storage_path($zipFileName);
+        $storagePath = storage_path('app');
+        $zipFileName = 'backup-' . date('Y-m-d') . '.zip';
+        $zipFilePath = storage_path($zipFileName);
 
-    // Create new zip archive
-    $zip = new ZipArchive();
-    if ($zip->open($zipFilePath, ZipArchive::CREATE) !== true) {
-        return response()->json(['message' => 'Failed to create backup zip file.']);
-    }
-
-    // Get all files in storage directory
-    $files = Storage::allFiles();
-
-    // Add all files to zip archive
-    foreach ($files as $file) {
-        $filePath = $storagePath . '/' . $file;
-        if (file_exists($filePath)) {
-            $zip->addFile($filePath, $file);
+        // Create new zip archive
+        $zip = new ZipArchive();
+        if ($zip->open($zipFilePath, ZipArchive::CREATE) !== true) {
+            return response()->json(['message' => 'Failed to create backup zip file.']);
         }
-    }
 
-    // Close the zip file
-    $zip->close();
+        // Get all files in storage directory
+        $files = Storage::allFiles();
 
-    // Download the zip file
-    return response()->download($zipFilePath, $zipFileName);
+        // Add all files to zip archive
+        foreach ($files as $file) {
+            $filePath = $storagePath . '/' . $file;
+            if (file_exists($filePath)) {
+                $zip->addFile($filePath, $file);
+            }
+        }
+
+        // Close the zip file
+        $zip->close();
+
+        // Download the zip file
+        return response()->download($zipFilePath, $zipFileName);
     }
 }

@@ -20,7 +20,7 @@
                 class="form-control @error('password') is-invalid @enderror  form-control-xl" name="password"
                 value="{{ old('password') }}" required autocomplete="password">
             <div class="form-control-icon">
-                <i class="bi bi-person"></i>
+                <i class="bi bi-grid"></i>
             </div>
         </div>
         @error('password')

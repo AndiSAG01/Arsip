@@ -27,16 +27,14 @@
                 <li class="submenu-item ">
                     <a href="/admin">Petugas</a>
                 </li>
-                @if (Auth::user()->isAdmin == true)
-                <li class="submenu-item ">
+                <li class="submenu-item {{ Auth()->user()->isAdmin == true ? '' : 'd-none' }}">
                     <a href="/superadmin">Kepala</a>
                 </li>
-                @endif
             </ul>
         </li>
-        <li class="sidebar-item  has-sub">
+        <li class="sidebar-item has-sub {{ Auth()->user()->isAdmin == true ? 'd-none' : '' }}">
             <a href="#" class="sidebar-link">
-                <i class="bi bi-grid-1x2-fill"></i>
+                <i class="bi bi-file-text"></i>
                 <span>Arsip</span>
             </a>
             <ul class="submenu ">
@@ -50,10 +48,10 @@
         </li>
 
 
-        <li class="sidebar-item">
+        <li class="sidebar-item {{ Auth()->user()->isAdmin == true ? 'd-none' : '' }}">
             <a href="/backup" class='sidebar-link'>
                 <i class="bi bi-layer-backward"></i>
-                <span>Backup dokumen</span>
+                <span>Backup Dokumen</span>
             </a>
         </li>
 
@@ -78,7 +76,7 @@
                 onclick="event.preventDefault();
             document.getElementById('logout-form').submit();"
                 class='sidebar-link'>
-                <i class="bi bi-door-closed"></i>                <span>Logout</span>
+                <i class="bi bi-door-closed"></i> <span>Logout</span>
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
