@@ -12,7 +12,7 @@
                 <div class="modal-body">
                     <h6 class="text-center">Ubah Jenis Surat</h6>
                     <hr>
-                    <form action="/category/{{ $item->slug }}" method="post">
+                    <form action="{{ route('type.update', $item->slug ) }}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="modal-body">

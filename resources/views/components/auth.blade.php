@@ -18,11 +18,8 @@
         <div class="row h-100">
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
-                    <div class="auth-logo">
-                        <h2 class="fw-bold">Arsip Digital</h2>
-                    </div>
-                    <h1 class="auth-title">Log in.</h1>
-                    <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
+                    <h1 class="auth-title">Arsip Digital</h1>
+                    <p class="auth-subtitle mb-5">Masuk dengan akun terdaftar.</p>
 
                     {{ $slot }}
                 </div>
@@ -33,6 +30,9 @@
                 </div>
             </div>
         </div>
+        @env('local')
+        <script src="<http://localhost:35729/livereload.js>"></script>
+        @endenv
 
     </div>
 </body>

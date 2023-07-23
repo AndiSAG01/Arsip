@@ -17,29 +17,17 @@
                 <span>Dashboard</span>
             </a>
         </li>
-
-        <li class="sidebar-item  has-sub">
-            <a href="#" class="sidebar-link">
-                <i class="bi bi-grid-1x2-fill"></i>
-                <span>Master Setup</span>
-            </a>
-            <ul class="submenu ">
-                <li class="submenu-item ">
-                    <a href="/admin">Petugas</a>
-                </li>
-                <li class="submenu-item {{ Auth()->user()->isAdmin == true ? '' : 'd-none' }}">
-                    <a href="/superadmin">Kepala</a>
-                </li>
-            </ul>
-        </li>
-        <li class="sidebar-item has-sub {{ Auth()->user()->isAdmin == true ? 'd-none' : '' }}">
+        <li class="sidebar-item has-sub">
             <a href="#" class="sidebar-link">
                 <i class="bi bi-file-text"></i>
                 <span>Arsip</span>
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
-                    <a href="/category">Jenis Dokumen</a>
+                    <a href="/category">Jenis Surat</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="{{ route('type.index') }}">Sifat Surat</a>
                 </li>
                 <li class="submenu-item ">
                     <a href="/document">Data Dokumen</a>
@@ -48,7 +36,7 @@
         </li>
 
 
-        <li class="sidebar-item {{ Auth()->user()->isAdmin == true ? 'd-none' : '' }}">
+        <li class="sidebar-item">
             <a href="/backup" class='sidebar-link'>
                 <i class="bi bi-layer-backward"></i>
                 <span>Backup Dokumen</span>

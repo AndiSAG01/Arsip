@@ -10,7 +10,14 @@ class Document extends Model
     use HasFactory;
 
     protected $fillable = [
-        'category_id', 'name', 'code', 'description', 'file', 'slug'
+        'category_id',
+        'type_id',
+        'name',
+        'code',
+        'description',
+        'file',
+        'slug',
+        'from',
     ];
 
     /**
@@ -21,5 +28,9 @@ class Document extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
     }
 }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Document;
+use App\Models\Type;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Type::insert([
+            [
+                'name' => 'Surat Resmi',
+                'slug' => Str::slug('Surat Resmi'),
+            ],
+            [
+                'name' => 'Surat Tidak Resmi',
+                'slug' => Str::slug('Surat Tidak Resmi'),
+            ],
+        ]);
+        Category::insert([
+            [
+                'name' => 'Surat Masuk',
+                'slug' => Str::slug('Surat Masuk'),
+            ],
+            [
+                'name' => 'Surat Keluar',
+                'slug' => Str::slug('Surat Keluar'),
+            ],
+        ]);
+
         User::insert([
            [
             'name' => 'kepala',

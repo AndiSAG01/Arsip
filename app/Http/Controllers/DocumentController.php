@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DocumentRequest;
 use App\Models\Category;
 use App\Models\Document;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -19,6 +20,7 @@ class DocumentController extends Controller
     {
         return view('document.index', [
             'category' => Category::get(),
+            'type' => Type::get(),
             'documents' => Document::latest()->get()
         ]);
     }
@@ -31,8 +33,10 @@ class DocumentController extends Controller
 
         Document::create([
             'category_id' => $request->category_id,
+            'type_id' => $request->type_id,
             'name' => $request->name,
             'code' => $request->code,
+            'from' => $request->from,
             'description' => $request->description,
             'file' => $filePath,
             'slug' => Str::slug($request->name)
@@ -47,6 +51,7 @@ class DocumentController extends Controller
         return view('document.update', [
             'document' => document::whereSlug($slug)->first(),
             'category' => Category::get(),
+            'type' => Type::get(),
         ]);
     }
 
@@ -54,8 +59,10 @@ class DocumentController extends Controller
     {
         $request->validate([
             'category_id' => 'integer|required',
+            'type_id' => 'integer|required',
             'name' => 'string|required|min:5',
             'code' => 'string|required|min:6',
+            'from' => 'string|required|min:6',
             'description' => 'string|min:5|required',
         ]);
         $document = Document::find($id);
@@ -68,13 +75,15 @@ class DocumentController extends Controller
             $document->file = $filePath;
         }
             $document->category_id = $request->category_id;
+            $document->type_id = $request->type_id;
             $document->name = $request->name;
             $document->code = $request->code;
+            $document->from = $request->from;
             $document->description = $request->description;
             $document->slug = Str::slug($request->name);
             $document->save();
 
-        return redirect('document')->with('success', 'Dokumen telah diubah 👍');
+        return redirect('/document')->with('success', 'Dokumen telah diubah 👍');
     }
 
     function destroy($slug)
