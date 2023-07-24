@@ -27,21 +27,19 @@ Auth::routes();
 Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    route::get('/admin', [UserController::class, 'index']);
-    route::post('/admin', [UserController::class, 'store']);
-    Route::get('/admin/{slug}/edit', [UserController::class, 'edit']);
-    Route::put('/admin/{slug}', [UserController::class, 'update']);
-    Route::delete('/admin/{slug}', [UserController::class, 'destroy']);
+    route::get('/user', [UserController::class, 'index']);
+    route::post('/user', [UserController::class, 'store']);
+    Route::get('/user/{slug}/edit', [UserController::class, 'edit']);
+    Route::put('/user/{slug}', [UserController::class, 'update']);
+    Route::delete('/user/{slug}', [UserController::class, 'destroy']);
 
     route::get('/type', [TypeController::class, 'index'])->name('type.index');
     route::post('/type', [TypeController::class, 'store'])->name('type.store');
-    Route::get('/type/{slug}/edit', [TypeController::class, 'edit'])->name('type.edit');
     Route::put('/type/{slug}', [TypeController::class, 'update'])->name('type.update');
     Route::delete('/type/{slug}', [TypeController::class, 'destroy'])->name('type.destroy');
 
     route::get('/category', [CategoryController::class, 'index']);
     route::post('/category', [CategoryController::class, 'store']);
-    Route::get('/category/{slug}/edit', [CategoryController::class, 'edit']);
     Route::put('/category/{slug}', [CategoryController::class, 'update']);
     Route::delete('/category/{slug}', [CategoryController::class, 'destroy']);
 

@@ -13,11 +13,12 @@ class UserController extends Controller
     public function index()
     {
         return view('user.index', [
-            'users' => User::where('IsAdmin', 0)->latest()->get(),
+            'users' => User::latest()->get(),
         ]);
     }
     public function store(UserRequest $request)
     {
+        // dd($request->all());
         user::insert([
             'nik' => $request->nik,
             'nip' => $request->nip,
@@ -28,7 +29,7 @@ class UserController extends Controller
             'address' => $request->address,
             'telp' => $request->telp,
             'birthday' => $request->birthday,
-            'isAdmin' => 0,
+            'isAdmin' => $request->isAdmin,
         ]);
 
         return back()->with('success', 'Tambah petugas telah ditambah 😎');
@@ -44,7 +45,7 @@ class UserController extends Controller
     public function update(Request $request, $slug)
     {
         // dd($request->all());
-        
+
         $request->validate([
             'email' => 'required|string|email|max:255',
             'nik' => 'required|min:16',
@@ -53,6 +54,7 @@ class UserController extends Controller
             'address' => 'required|min:8',
             'telp' => 'required|numeric|digits_between:11,12',
             'birthday' => 'required|date_format:Y-m-d',
+            'isAdmin' => 'required'
         ]);
 
         $user = User::whereSlug($slug)->first();
@@ -61,7 +63,7 @@ class UserController extends Controller
         } else {
             $password = $user->password;
         }
-        
+
         user::whereSlug($slug)->update([
             'nik' => $request->nik,
             'nip' => $request->nip,
@@ -72,10 +74,10 @@ class UserController extends Controller
             'address' => $request->address,
             'telp' => $request->telp,
             'birthday' => $request->birthday,
-            'isAdmin' => 0,
+            'isAdmin' => $request->isAdmin,
         ]);
 
-        return redirect('admin')->with('success', 'Ubah data Berhasil 😊');
+        return redirect('/user')->with('success', 'Ubah data Berhasil 😊');
     }
 
     public function destroy($slug)

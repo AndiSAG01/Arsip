@@ -11,14 +11,14 @@ class ReportController extends Controller
     function index()
     {
         return view('report.user',[
-            'users' =>User::get()
+            'users' => User::latest()->get()
         ]);
     }
 
     function document()
     {
         return view('report.document',[
-            'documents' =>Document::get()
+            'documents' => Document::latest()->get()
         ]);
     }
 }

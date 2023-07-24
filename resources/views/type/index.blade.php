@@ -1,5 +1,6 @@
 <x-app>
     <x-slot name="title">Sifat Surat</x-slot>
+    @include('layouts.table')
     <div class="card">
         <div class="card-header">
             @include('type.store')

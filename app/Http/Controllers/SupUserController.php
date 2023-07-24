@@ -10,12 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 class SupUserController extends Controller
 {
-    public function index()
-    {
-        return view('supUser.index', [
-            'users' => User::where('IsAdmin', 1)->latest()->get(),
-        ]);
-    }
     public function store(UserRequest $request)
     {
         user::insert([
@@ -52,7 +46,7 @@ class SupUserController extends Controller
             'telp' => 'required|numeric|digits_between:11,12',
             'birthday' => 'required|date_format:Y-m-d',
         ]);
-        
+
 
         User::whereSlug($slug)->update([
             'nik' => $request->nik,

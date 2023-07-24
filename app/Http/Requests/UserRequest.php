@@ -31,7 +31,8 @@ class UserRequest extends FormRequest
             'address' => 'required|min:8',
             'telp' => 'required|numeric|digits_between:11,12',
             'birthday' => 'required|date_format:Y-m-d',
+            'isAdmin' => 'required'
         ];
     }
-    
+
 }

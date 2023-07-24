@@ -17,26 +17,32 @@
                 <span>Dashboard</span>
             </a>
         </li>
-        <li class="sidebar-item has-sub">
+        <li class="sidebar-item {{ Auth()->user()->isAdmin == 0 ? 'd-none' : '' }}">
+            <a href="/user" class='sidebar-link'>
+                <i class="bi bi-people"></i>
+                <span>User</span>
+            </a>
+        </li>
+        <li class="sidebar-item has-sub {{ Auth()->user()->isAdmin == 1 ? 'd-none' : '' }}">
             <a href="#" class="sidebar-link">
                 <i class="bi bi-file-text"></i>
                 <span>Arsip</span>
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
-                    <a href="/category">Jenis Surat</a>
+                    <a href="/category">Jenis Arsip</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="{{ route('type.index') }}">Sifat Surat</a>
+                    <a href="{{ route('type.index') }}">Sifat Arsip</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="/document">Data Dokumen</a>
+                    <a href="/document">Data Arsip</a>
                 </li>
             </ul>
         </li>
 
 
-        <li class="sidebar-item">
+        <li class="sidebar-item {{ Auth()->user()->isAdmin == 0 ? 'd-none' : '' }}">
             <a href="/backup" class='sidebar-link'>
                 <i class="bi bi-layer-backward"></i>
                 <span>Backup Dokumen</span>
@@ -51,7 +57,7 @@
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
-                    <a href="/reportUser">Petugas</a>
+                    <a href="/reportUser">Akun</a>
                 </li>
                 <li class="submenu-item ">
                     <a href="/reportDocument">Dokumen</a>

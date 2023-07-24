@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="/assets/css/app.css">
     <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
-    @include('layouts.table')
     @yield('css')
 </head>
 
@@ -54,9 +53,9 @@
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         <strong>🔔 Gagal</strong> Data tidak valid.
-                        @foreach ($errors->all() as $error)
+                        {{-- @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
-                        @endforeach
+                        @endforeach --}}
                     </div>
                 @elseif (session('success'))
                     <div class="alert alert-primary alert-dismissible fade show" role="alert">

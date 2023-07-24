@@ -1,11 +1,9 @@
-<x-print-layout>
-    <div class="page-heading">
-        <h3>Laporan data akun petugas </h3>
-            <small>Data yang telah didaftarkan</small>
-    </div>
+<x-app>
+    <x-slot name="title">Laporan Akun</x-slot>
+    @include('layouts.report')
     <div class="card">
         <div class="card-body table-responsive">
-            <table id="mytable" class="display" style="width:100%">
+            <table id="example" class="table nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>No.</th>
@@ -37,4 +35,4 @@
             </table>
         </div>
     </div>
-</x-print-layout>
+</x-app>

@@ -12,7 +12,7 @@
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <h6 class="text-muted font-semibold">Jenis Dokumen</h6>
+                                <h6 class="text-muted font-semibold">Jenis Arsip</h6>
                                 <h6 class="font-extrabold mb-0">{{ $category }}</h6>
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <h6 class="text-muted font-semibold">Total Dokumen</h6>
+                                <h6 class="text-muted font-semibold">Total Arsip</h6>
                                 <h6 class="font-extrabold mb-0">{{ $document }}</h6>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Statistik Dokumen</h4>
+                        <h4>Statistik Arsip</h4>
                     </div>
                     <div class="card-body">
                         {!! $chart->container() !!}

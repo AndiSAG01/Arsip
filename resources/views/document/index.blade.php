@@ -1,5 +1,6 @@
 <x-app>
     <x-slot name="title">Arsip</x-slot>
+    @include('layouts.table')
     <div class="card">
         <div class="card-header">
             @include('document.store')
@@ -15,7 +16,7 @@
                             <th>Nama Sifat Surat</th>
                             <th>Nomor Surat</th>
                             <th>Tanggal Input</th>
-                            <th>Deskripsi</th>
+                            <th>Perihal</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
