@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <x-datetarget></x-datetarget>
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">

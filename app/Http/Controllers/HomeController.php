@@ -31,10 +31,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $countCategory = Category::count();
         $document = Document::count();
-        $user = User::where('isAdmin', 0)->count();
-        $supUser = User::where('isAdmin', 1)->count();
+        $user = User::get()->count();
 
         $categories = Category::select('id', 'name')->get();
         $chartData = [];
@@ -53,10 +51,8 @@ class HomeController extends Controller
 
         return view('home', [
             'chart' => $chart,
-            'category' => $countCategory,
             'document' => $document,
             'user' => $user,
-            'supUser' => $supUser,
         ]);
     }
 }

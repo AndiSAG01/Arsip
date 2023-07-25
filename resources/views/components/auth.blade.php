@@ -14,7 +14,7 @@
 
 <body>
     <div id="auth">
-
+        <x-datetarget></x-datetarget>
         <div class="row h-100">
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
