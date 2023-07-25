@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
         ]
         ]);
         User::factory(20)->create();
-        Category::factory(5)->create();
-        Document::factory(5)->create();
+        // Category::factory(5)->create();
+        // Document::factory(5)->create();
     }
 }

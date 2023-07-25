@@ -1,6 +1,6 @@
     <!-- Button trigger for basic modal -->
     <button type="button" class="btn btn-primary block" data-bs-toggle="modal" data-bs-target="#default">
-        Tambah jenis surat
+        Tambah Sifat Surat
     </button>
 
     <!--Basic Modal -->
@@ -9,14 +9,14 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h6 class="text-center">Tambah Jenis Surat</h6>
+                    <h6 class="text-center">Tambah Sifat Surat</h6>
                     <hr>
                     <form action="{{ route('type.store') }}" method="post">
                         @csrf
                         <div class="modal-body">
                             <div class="form-group">
                                 <input type="text" class="form-control" value="{{ old('name') }}" name="name"
-                                    id="name" placeholder="Masukkan nama jenis surat">
+                                    id="name" placeholder="Masukkan nama sifat surat">
                                 @error('name')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror

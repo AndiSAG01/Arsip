@@ -9,7 +9,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h6 class="text-center">Tambah Jenis Surat</h6>
+                    <h6 class="text-center">Tambah User</h6>
                     <hr>
                     <form action="/user" method="post">
                         @csrf

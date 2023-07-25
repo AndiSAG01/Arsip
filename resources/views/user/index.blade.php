@@ -13,6 +13,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Nama Petugas</th>
+                            <th>Role Akun</th>
                             <th>Email</th>
                             <th>NIK</th>
                             <th>NIP</th>
@@ -27,6 +28,7 @@
                             <tr>
                                 <td>{{ ++$no }}</td>
                                 <td>{{ $item->name }}</td>
+                                <td>{{ $item->isAdmin == 0 ? 'Petugas' : 'Kepala' }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->nik }}</td>
                                 <td>{{ $item->nip }}</td>

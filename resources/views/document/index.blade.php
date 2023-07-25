@@ -37,10 +37,11 @@
                                         <form action="/document/{{ $item->slug }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger"><i
-                                                    class="bi bi-trash"></i>
+                                            <button type="submit" class="btn btn-sm btn-danger">
                                                 Hapus</button>
                                         </form>
+                                        <a class="btn btn-success btn-sm" href="/document/{{ $item->slug }}/download"
+                                            role="button">Download</a>
                                     </div>
                                 </td>
                             </tr>

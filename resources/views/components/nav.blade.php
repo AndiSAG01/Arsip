@@ -29,11 +29,11 @@
                 <span>Arsip</span>
             </a>
             <ul class="submenu ">
-                <li class="submenu-item ">
+                {{-- <li class="submenu-item ">
                     <a href="/category">Jenis Arsip</a>
-                </li>
+                </li> --}}
                 <li class="submenu-item ">
-                    <a href="{{ route('type.index') }}">Sifat Arsip</a>
+                    <a href="{{ route('type.index') }}">Sifat Surat</a>
                 </li>
                 <li class="submenu-item ">
                     <a href="/document">Data Arsip</a>
@@ -49,8 +49,15 @@
             </a>
         </li>
 
+        <li class="sidebar-item">
+            <a href="/reportDocument" class='sidebar-link'>
+                <i class="bi bi-calendar2"></i>
+                <span>Laporan</span>
+            </a>
+        </li>
 
-        <li class="sidebar-item  has-sub">
+
+        {{-- <li class="sidebar-item  has-sub">
             <a href="#" class="sidebar-link">
                 <i class="bi bi-calendar2"></i>
                 <span>Laporan</span>
@@ -63,7 +70,7 @@
                     <a href="/reportDocument">Dokumen</a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 
         <li class="sidebar-item active">
             <a href="{{ route('logout') }}"

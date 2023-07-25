@@ -8,9 +8,10 @@
                     <tr>
                         <th>No.</th>
                         <th>Nama Surat</th>
-                        <th>Nama Jenis Surat</th>
-                        <th>Nama Sifat Surat</th>
+                        <th>Jenis Surat</th>
+                        <th>Sifat Surat</th>
                         <th>Nomor Surat</th>
+                        <th>Asal Surat</th>
                         <th>Tanggal Input</th>
                         <th>Perihal</th>
                         <th class="{{ Auth()->user()->isAdmin == 1 ? '' : 'd-none' }}">Aksi</th>
@@ -24,7 +25,8 @@
                             <td>{{ $item->category->name }}</td>
                             <td>{{ $item->type->name }}</td>
                             <td>{{ $item->code }}</td>
-                            <td>{{ carbon\carbon::parse($item->created_at)->format('d-m-Y') }}</td>
+                            <td>{{ $item->from }}</td>
+                            <td>{{ carbon\carbon::parse($item->created_at)->format('Y/m/d') }}</td>
                             <td>{{ $item->description }}</td>
                             <td class="{{ Auth()->user()->isAdmin == 1 ? '' : 'd-none' }}"><a
                                     class="btn btn-success btn-sm" href="/document/{{ $item->slug }}/download"
