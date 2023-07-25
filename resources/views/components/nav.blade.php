@@ -42,7 +42,7 @@
         </li>
 
 
-        <li class="sidebar-item {{ Auth()->user()->isAdmin == 0 ? 'd-none' : '' }}">
+        <li class="sidebar-item">
             <a href="/backup" class='sidebar-link'>
                 <i class="bi bi-layer-backward"></i>
                 <span>Backup Dokumen</span>
