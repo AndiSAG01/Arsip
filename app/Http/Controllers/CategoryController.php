@@ -28,7 +28,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'slug' => Str::slug($request->name),
         ]);
-        return back()->with('success', 'Tambah jenis dokemen berhasil 👌');
+        return back()->with('success', 'Data telah ditambah.');
     }
 
     function edit($slug){
@@ -43,11 +43,11 @@ class CategoryController extends Controller
             'slug' => str::slug($request->name),
         ]);
 
-        return redirect('category')->with('success', 'Ubah jenis dokumen berhasil 👏');
+        return redirect('category')->with('success', 'Data telah diubah.');
     }
 
     function destroy($slug){
         Category::whereSlug($slug)->delete();
-        return back()->with('success', 'Hapus jenis dokumen berhasil 👍');
+        return back()->with('success', 'Data telah dihapus.');
     }
 }

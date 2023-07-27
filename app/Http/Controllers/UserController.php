@@ -32,7 +32,7 @@ class UserController extends Controller
             'isAdmin' => $request->isAdmin,
         ]);
 
-        return back()->with('success', 'Tambah petugas telah ditambah 😎');
+        return back()->with('success', 'Data telah ditambah.');
     }
 
     public function edit($slug)
@@ -77,12 +77,12 @@ class UserController extends Controller
             'isAdmin' => $request->isAdmin,
         ]);
 
-        return redirect('/user')->with('success', 'Ubah data Berhasil 😊');
+        return redirect('/user')->with('success', 'Data telah diubah.');
     }
 
     public function destroy($slug)
     {
         User::whereSlug($slug)->delete();
-        return back()->with('success', 'Hapus data Berhasil 👏');
+        return back()->with('success', 'Data telah dihapus.');
     }
 }

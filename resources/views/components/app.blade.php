@@ -53,7 +53,8 @@
                 @if ($errors->any())
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <strong>🔔 Gagal</strong> Data tidak valid.
+                        <strong>🔔 Proses Gagal</strong>
+                        <p>Data tidak valid.</p>
                         {{-- @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach --}}
@@ -61,7 +62,8 @@
                 @elseif (session('success'))
                     <div class="alert alert-primary alert-dismissible fade show" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <strong>🔔 Berhasil</strong> Data telah disimpan.
+                        <strong>🔔 Proses Berhasil</strong>
+                        <p>{{ session('success') }}</p>
                     </div>
                 @endif
             </div>

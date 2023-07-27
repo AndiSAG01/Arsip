@@ -1,6 +1,6 @@
 <x-app>
     <x-slot name="title">Dashboard</x-slot>
-    <div class="row">
+    <div class="row ">
         <div class="col-md">
             <div class="card">
                 <div class="card-body px-3 py-4-5">

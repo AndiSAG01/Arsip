@@ -23,7 +23,7 @@ class TypeController extends Controller
             'name' => $request->name,
             'slug' => Str::slug($request->name),
         ]);
-        return back()->with('success', 'Tambah jenis dokemen berhasil 👌');
+        return back()->with('success', 'Data telah ditambah.');
     }
 
     function edit($slug){
@@ -38,11 +38,11 @@ class TypeController extends Controller
             'slug' => str::slug($request->name),
         ]);
 
-        return redirect('type')->with('success', 'Ubah jenis dokumen berhasil 👏');
+        return redirect('type')->with('success', 'Data telah diubah.');
     }
 
     function destroy($slug){
         Type::whereSlug($slug)->delete();
-        return back()->with('success', 'Hapus jenis dokumen berhasil 👍');
+        return back()->with('success', 'Data telah dihapus.');
     }
 }

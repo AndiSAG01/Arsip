@@ -15,7 +15,6 @@ use ZipArchive;
 
 class DocumentController extends Controller
 {
-    // 'category_id', 'name', 'code', 'description', 'file', 'slug'
     function index()
     {
         return view('document.index', [
@@ -42,7 +41,7 @@ class DocumentController extends Controller
             'slug' => Str::slug($request->name)
         ]);
 
-        return back()->with('success', 'Dokemen baru telah ditambah 👍');
+        return back()->with('success', 'Data telah ditambah.');
     }
 
     function edit($slug)
@@ -83,7 +82,7 @@ class DocumentController extends Controller
             $document->slug = Str::slug($request->name);
             $document->save();
 
-        return redirect('/document')->with('success', 'Dokumen telah diubah 👍');
+        return redirect('/document')->with('success', 'Data telah diubah.');
     }
 
     function destroy($slug)
@@ -92,7 +91,7 @@ class DocumentController extends Controller
         Storage::disk('public')->delete($file);
         Document::whereSlug($slug)->delete();
 
-        return back()->with('success', 'Dokumen telah dihapus');
+        return back()->with('success', 'Data telah dihapus.');
     }
 
     function download($slug){
