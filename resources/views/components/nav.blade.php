@@ -46,7 +46,10 @@
                     <a href="{{ route('type.index') }}">Sifat Surat</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="/document">Data Arsip</a>
+                    <a href="{{ route('surat-masuk.index') }}">Surat Masuk</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="{{ route('surat-keluar.index') }}">Surat Keluar</a>
                 </li>
             </ul>
         </li>

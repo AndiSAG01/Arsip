@@ -43,12 +43,30 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/category/{slug}', [CategoryController::class, 'update']);
     Route::delete('/category/{slug}', [CategoryController::class, 'destroy']);
 
-    route::get('/document', [DocumentController::class, 'index']);
-    route::post('/document', [DocumentController::class, 'store']);
-    Route::get('/document/{slug}/edit', [DocumentController::class, 'edit']);
-    Route::put('/document/{id}', [DocumentController::class, 'update']);
-    Route::delete('/document/{slug}', [DocumentController::class, 'destroy']);
-    Route::get('/document/{slug}/download', [DocumentController::class, 'download']);
+    Route::prefix('surat-masuk')->group(function () {
+        route::get('/', [DocumentController::class, 'index'])->name('surat-masuk.index');
+        route::post('/', [DocumentController::class, 'store'])->name('surat-masuk.store');
+        Route::get('/{slug}/edit', [DocumentController::class, 'edit'])->name('surat-masuk.edit');
+        Route::put('/{id}', [DocumentController::class, 'update'])->name('surat-masuk.update');
+        Route::delete('/{slug}', [DocumentController::class, 'destroy'])->name('surat-masuk.destroy');
+        Route::get('/{slug}/download', [DocumentController::class, 'download'])->name('surat-masuk.download');
+
+    });
+    Route::prefix('surat-keluar')->group(function () {
+        route::get('/', [DocumentController::class, 'index'])->name('surat-keluar.index');
+        route::post('/', [DocumentController::class, 'store'])->name('surat-keluar.store');
+        Route::get('/{slug}/edit', [DocumentController::class, 'edit'])->name('surat-keluar.edit');
+        Route::put('/{id}', [DocumentController::class, 'update'])->name('surat-keluar.update');
+        Route::delete('/{slug}', [DocumentController::class, 'destroy'])->name('surat-keluar.destroy');
+        Route::get('/{slug}/download', [DocumentController::class, 'download'])->name('surat-keluar.download');
+
+    });
+    // route::get('/document', [DocumentController::class, 'index']);
+    // route::post('/document', [DocumentController::class, 'store']);
+    // Route::get('/document/{slug}/edit', [DocumentController::class, 'edit']);
+    // Route::put('/document/{id}', [DocumentController::class, 'update']);
+    // Route::delete('/document/{slug}', [DocumentController::class, 'destroy']);
+    // Route::get('/document/{slug}/download', [DocumentController::class, 'download']);
     Route::get('/backup', [DocumentController::class, 'backup']);
 
     Route::get('reportUser', [ReportController::class, 'index']);

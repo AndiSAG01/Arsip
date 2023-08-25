@@ -52,15 +52,15 @@
                                             </form>
                                         @else
                                             <p>-</p>
+                                        </div>
                                     @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            </td>
-            </tr>
-            @endforeach
-            </tbody>
-            </table>
         </div>
-    </div>
     </div>
 
 </x-app>

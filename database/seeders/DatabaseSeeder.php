@@ -19,16 +19,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Type::insert([
-            [
-                'name' => 'Surat Resmi',
-                'slug' => Str::slug('Surat Resmi'),
-            ],
-            [
-                'name' => 'Surat Tidak Resmi',
-                'slug' => Str::slug('Surat Tidak Resmi'),
-            ],
-        ]);
+        
         Category::insert([
             [
                 'name' => 'Surat Masuk',
