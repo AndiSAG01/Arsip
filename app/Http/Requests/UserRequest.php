@@ -24,13 +24,13 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|string|email|max:255|unique:users,email',
-            'nik' => 'required|min:16|unique:users,nik',
-            'nip' => 'required|min:9|unique:users,nip',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$this->id,
+            'nik' => 'required|min:16|unique:users,nik,'.$this->id,
+            'nip' => 'required|min:9|unique:users,nip,'.$this->id,
             'name' => 'required|min:5',
             'address' => 'required|min:8',
-            'telp' => 'required|numeric|digits_between:11,12',
-            'birthday' => 'required|date_format:Y-m-d',
+            'telp' => 'required|numeric|digits_between:11,12|unique:users,telp,'.$this->id,
+            'birthday' => 'required',
             'isAdmin' => 'required'
         ];
     }

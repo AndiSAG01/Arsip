@@ -38,25 +38,29 @@
                                 </td>
                                 <td>{{ Carbon\carbon::parse($item->birthday)->format('d F Y') }}</td>
                                 <td>
-                                    <div class="d-flex gap-3">
-                                        <a href="/user/{{ $item->slug }}/edit" class="btn btn-sm btn-warning"><i
-                                                class="bi bi-pencil-square"></i>
-                                            Ubah</a>
-                                        <form action="/user/{{ $item->slug }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger"><i
-                                                    class="bi bi-trash"></i>
-                                                Hapus</button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                    @if (Auth()->user()->idAdmin == 1)
+                                        <div class="d-flex gap-3">
+                                            <a href="/user/{{ $item->slug }}/edit" class="btn btn-sm btn-warning"><i
+                                                    class="bi bi-pencil-square"></i>
+                                                Ubah</a>
+                                            <form action="/user/{{ $item->slug }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger"><i
+                                                        class="bi bi-trash"></i>
+                                                    Hapus</button>
+                                            </form>
+                                        @else
+                                            <p>-</p>
+                                    @endif
             </div>
+            </td>
+            </tr>
+            @endforeach
+            </tbody>
+            </table>
         </div>
+    </div>
     </div>
 
 </x-app>

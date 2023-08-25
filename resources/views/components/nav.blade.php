@@ -17,21 +17,31 @@
                 <span>Dashboard</span>
             </a>
         </li>
-        <li class="sidebar-item {{ Auth()->user()->isAdmin == 0 ? 'd-none' : '' }}">
-            <a href="/user" class='sidebar-link'>
+
+        <li class="sidebar-item has-sub">
+            <a href="#" class="sidebar-link">
                 <i class="bi bi-people"></i>
                 <span>User</span>
             </a>
+            <ul class="submenu ">
+                <li class="submenu-item ">
+                    <a href="/user">Petugas</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="{{ route('profile.index', Str::slug(Auth()->user()->name)) }}">Profil Akun</a>
+                </li>
+            </ul>
         </li>
-        <li class="sidebar-item has-sub {{ Auth()->user()->isAdmin == 1 ? 'd-none' : '' }}">
+
+        <li class="sidebar-item has-sub">
             <a href="#" class="sidebar-link">
                 <i class="bi bi-file-text"></i>
                 <span>Arsip</span>
             </a>
             <ul class="submenu ">
-                {{-- <li class="submenu-item ">
+                <li class="submenu-item ">
                     <a href="/category">Jenis Arsip</a>
-                </li> --}}
+                </li>
                 <li class="submenu-item ">
                     <a href="{{ route('type.index') }}">Sifat Surat</a>
                 </li>
@@ -84,5 +94,4 @@
             </form>
         </li>
     @endguest
-</ul>
 </ul>

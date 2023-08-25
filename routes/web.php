@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypeController;
 
 /*
@@ -52,5 +53,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('reportUser', [ReportController::class, 'index']);
     Route::get('reportDocument', [ReportController::class, 'document']);
+
+    Route::prefix('account')->group(function () {
+        Route::get('/{slug}/profile', [ProfileController::class, 'index'])->name('profile.index');
+        Route::put('/{id}', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/{id}', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    });
 
 });

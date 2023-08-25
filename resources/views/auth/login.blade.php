@@ -1,7 +1,6 @@
 <x-auth>
     <form method="POST" action="{{ route('login') }}">
         @csrf
-
         <div class="form-group position-relative has-icon-left mb-4">
             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror form-control-xl"
                 name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -10,9 +9,9 @@
             </div>
         </div>
         @error('email')
-            <span class="text-danger">
-                <strong>{{ $message }}</strong>
-            </span>
+            <p class="text-danger fw-bold my-3">
+                {{ $message }}
+            </p>
         @enderror
 
         <div class="form-group position-relative has-icon-left mb-4">
@@ -22,12 +21,12 @@
             <div class="form-control-icon">
                 <i class="bi bi-grid"></i>
             </div>
+            @error('password')
+                <p class="text-danger fw-bold my-3">
+                    {{ $message }}
+                </p>
+            @enderror
         </div>
-        @error('password')
-            <span class="text-danger">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
 
         <div class="form-check form-check-lg d-flex align-items-end">
             <input class="form-check-input me-2" type="checkbox" name="remember" id="remember"

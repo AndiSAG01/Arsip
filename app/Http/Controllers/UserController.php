@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         return view('user.index', [
-            'users' => User::latest()->get(),
+            'users' => User::where('isAdmin', 0)->get(),
         ]);
     }
     public function store(UserRequest $request)
