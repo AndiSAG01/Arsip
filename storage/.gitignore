@@ -1,0 +1,5 @@
+*
+!app/public/.gitignore
+!framework/*
+!log/.gitignore
+!.gitignore

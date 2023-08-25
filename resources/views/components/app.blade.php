@@ -49,23 +49,37 @@
                 </a>
             </header>
             <div class="page-heading">
-                <h3>{{ $title ?? '' }}</h3>
                 @if ($errors->any())
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <strong>🔔 Proses Gagal</strong>
-                        <p>Data tidak valid.</p>
-                        {{-- @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach --}}
+                    <div class="alert alert-danger alert-dismissible fade show rounded" role="alert">
+                        <strong>❌ Gagal</strong>
+                        <p>Data yang Anda masukkan tidak sesuai dengan format atau syarat yang ditentukan.</p>
                     </div>
                 @elseif (session('success'))
-                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <strong>🔔 Proses Berhasil</strong>
+                    <div class="alert alert-primary alert-dismissible fade show rounded" role="alert">
+                        <strong>✔ Berhasil</strong>
                         <p>{{ session('success') }}</p>
                     </div>
                 @endif
+                <div class="card">
+                    <div class="d-flex align-items-end row">
+                        <div class="col-sm-7">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">{{ $title ?? '' }} 🎉</h5>
+                                <p class="mb-4">
+                                    {{ $description ?? 'Arsip digital menyimpan dokumen penting dan memudahkan akses informasi di pemerintahan.' }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-5 text-center text-sm-left">
+                            <div class="card-body pb-0 px-0 px-md-4">
+                                <img src="https://demos.themeselection.com/sneat-bootstrap-html-admin-template-free/assets/img/illustrations/man-with-laptop-light.png"
+                                    height="140" alt="View Badge User"
+                                    data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                                    data-app-light-img="illustrations/man-with-laptop-light.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <main>

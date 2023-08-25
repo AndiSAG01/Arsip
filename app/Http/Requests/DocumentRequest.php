@@ -24,8 +24,6 @@ class DocumentRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => 'integer|required',
-            'name' => 'string|required|min:5',
             'code' => 'string|required|min:6',
             'from' => 'string|required|min:3',
             'description' => 'string|min:5|required',

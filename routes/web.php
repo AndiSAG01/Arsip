@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\IncomingMailController;
+use App\Http\Controllers\OutgoingMailController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -44,21 +46,21 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/category/{slug}', [CategoryController::class, 'destroy']);
 
     Route::prefix('surat-masuk')->group(function () {
-        route::get('/', [DocumentController::class, 'index'])->name('surat-masuk.index');
-        route::post('/', [DocumentController::class, 'store'])->name('surat-masuk.store');
-        Route::get('/{slug}/edit', [DocumentController::class, 'edit'])->name('surat-masuk.edit');
-        Route::put('/{id}', [DocumentController::class, 'update'])->name('surat-masuk.update');
-        Route::delete('/{slug}', [DocumentController::class, 'destroy'])->name('surat-masuk.destroy');
-        Route::get('/{slug}/download', [DocumentController::class, 'download'])->name('surat-masuk.download');
+        route::get('/', [IncomingMailController::class, 'index'])->name('surat-masuk.index');
+        route::post('/', [IncomingMailController::class, 'store'])->name('surat-masuk.store');
+        Route::get('/{id}/edit', [IncomingMailController::class, 'edit'])->name('surat-masuk.edit');
+        Route::put('/{id}', [IncomingMailController::class, 'update'])->name('surat-masuk.update');
+        Route::delete('/{id}', [IncomingMailController::class, 'destroy'])->name('surat-masuk.destroy');
+        Route::get('/{id}/download', [IncomingMailController::class, 'download'])->name('surat-masuk.download');
 
     });
     Route::prefix('surat-keluar')->group(function () {
-        route::get('/', [DocumentController::class, 'index'])->name('surat-keluar.index');
-        route::post('/', [DocumentController::class, 'store'])->name('surat-keluar.store');
-        Route::get('/{slug}/edit', [DocumentController::class, 'edit'])->name('surat-keluar.edit');
-        Route::put('/{id}', [DocumentController::class, 'update'])->name('surat-keluar.update');
-        Route::delete('/{slug}', [DocumentController::class, 'destroy'])->name('surat-keluar.destroy');
-        Route::get('/{slug}/download', [DocumentController::class, 'download'])->name('surat-keluar.download');
+        route::get('/', [OutgoingMailController::class, 'index'])->name('surat-keluar.index');
+        route::post('/', [OutgoingMailController::class, 'store'])->name('surat-keluar.store');
+        Route::get('/{id}/edit', [OutgoingMailController::class, 'edit'])->name('surat-keluar.edit');
+        Route::put('/{id}', [OutgoingMailController::class, 'update'])->name('surat-keluar.update');
+        Route::delete('/{id}', [OutgoingMailController::class, 'destroy'])->name('surat-keluar.destroy');
+        Route::get('/{id}/download', [OutgoingMailController::class, 'download'])->name('surat-keluar.download');
 
     });
     // route::get('/document', [DocumentController::class, 'index']);

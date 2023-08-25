@@ -36,6 +36,8 @@ class DocumentFactory extends Factory
             'description' => $this->faker->paragraph(),
             'file' => $filePath,
             'slug' => $this->faker->slug(),
+            'created_at' => $this->faker->dateTimeBetween(),
+            'updated_at' => $this->faker->dateTimeBetween()
         ];
     }
 }

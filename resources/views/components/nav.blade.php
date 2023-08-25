@@ -39,9 +39,9 @@
                 <span>Arsip</span>
             </a>
             <ul class="submenu ">
-                <li class="submenu-item ">
+                {{-- <li class="submenu-item ">
                     <a href="/category">Jenis Arsip</a>
-                </li>
+                </li> --}}
                 <li class="submenu-item ">
                     <a href="{{ route('type.index') }}">Sifat Surat</a>
                 </li>
