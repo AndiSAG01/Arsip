@@ -1,5 +1,9 @@
+# Mengabaikan semua file dan direktori di akar repositori
 *
+# Kecuali direktori storage dan isinya
 !app/public/.gitignore
 !framework/*
 !log/.gitignore
-!.gitignore
+
+# Kecuali file-file backup yang berakhir dengan .zip
+!storage/*.zip
