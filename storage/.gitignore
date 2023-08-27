@@ -6,4 +6,4 @@
 !log/.gitignore
 
 # Kecuali file-file backup yang berakhir dengan .zip
-!storage/*.zip
+storage/*.zip
