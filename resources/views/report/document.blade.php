@@ -7,7 +7,7 @@
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Nama Surat</th>
+                        <th>Surat</th>
                         <th>Jenis Surat</th>
                         <th>Sifat Surat</th>
                         <th>Nomor Surat</th>
@@ -21,7 +21,7 @@
                     @foreach ($documents as $no => $item)
                         <tr>
                             <td>{{ ++$no }}</td>
-                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->direction == 1 ? 'Surat Masuk' : 'Surat Keluar' }}</td>
                             <td>{{ $item->category->name }}</td>
                             <td>{{ $item->type->name }}</td>
                             <td>{{ $item->code }}</td>

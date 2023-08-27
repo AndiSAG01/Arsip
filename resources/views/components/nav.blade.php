@@ -18,42 +18,49 @@
             </a>
         </li>
 
-        <li class="sidebar-item has-sub">
-            <a href="#" class="sidebar-link">
-                <i class="bi bi-people"></i>
-                <span>User</span>
-            </a>
-            <ul class="submenu ">
-                <li class="submenu-item ">
-                    <a href="/user">Petugas</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="{{ route('profile.index', Str::slug(Auth()->user()->name)) }}">Profil Akun</a>
-                </li>
-            </ul>
-        </li>
-
-        <li class="sidebar-item has-sub">
-            <a href="#" class="sidebar-link">
-                <i class="bi bi-file-text"></i>
-                <span>Arsip</span>
-            </a>
-            <ul class="submenu ">
-                {{-- <li class="submenu-item ">
-                    <a href="/category">Jenis Arsip</a>
-                </li> --}}
-                <li class="submenu-item ">
-                    <a href="{{ route('type.index') }}">Sifat Surat</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="{{ route('surat-masuk.index') }}">Surat Masuk</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="{{ route('surat-keluar.index') }}">Surat Keluar</a>
-                </li>
-            </ul>
-        </li>
-
+        @if (Auth()->user()->isAdmin == 0)
+            <li class="sidebar-item">
+                <a href="{{ route('profile.index', Str::slug(Auth()->user()->name)) }}" class='sidebar-link'>
+                    <i class="bi bi-people"></i>
+                    <span>Profil Akun</span>
+                </a>
+            </li>
+            <li class="sidebar-item has-sub">
+                <a href="#" class="sidebar-link">
+                    <i class="bi bi-file-text"></i>
+                    <span>Arsip</span>
+                </a>
+                <ul class="submenu ">
+                    <li class="submenu-item ">
+                        <a href="/category">Jenis Arsip</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="{{ route('type.index') }}">Sifat Surat</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="{{ route('surat-masuk.index') }}">Surat Masuk</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="{{ route('surat-keluar.index') }}">Surat Keluar</a>
+                    </li>
+                </ul>
+            </li>
+        @else
+            <li class="sidebar-item has-sub">
+                <a href="#" class="sidebar-link">
+                    <i class="bi bi-people"></i>
+                    <span>User</span>
+                </a>
+                <ul class="submenu ">
+                    <li class="submenu-item ">
+                        <a href="/user">Petugas</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="{{ route('profile.index', Str::slug(Auth()->user()->name)) }}">Profil Akun</a>
+                    </li>
+                </ul>
+            </li>
+        @endif
 
         <li class="sidebar-item">
             <a href="/backup" class='sidebar-link'>

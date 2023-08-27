@@ -13,13 +13,18 @@
 </head>
 
 <body>
-    <div id="auth">
+    <div id="auth" class="d-flex justify-content-center align-items-center">
         <x-datetarget></x-datetarget>
-        <div class="container shadow mx-auto mt-5">
-            <div id="auth-left">
-                <h1 class="auth-title">Arsip Digital</h1>
-                <p class="auth-subtitle mb-5">Masuk dengan akun terdaftar.</p>
-                {{ $slot }}
+        <div class="container justify-content-center align-items-center">
+            <div class="row">
+                <div class="col-md d-none d-md-block">
+                    <img src="/assets/images/bg/bg1.jpg" alt="images" style="max-width: 500px">
+                </div>
+                <div class="col-md">
+                    <h1 class="auth-title mt-5">Arsip Digital</h1>
+                    <p class="auth-subtitle">Masuk dengan akun terdaftar.</p>
+                    {{ $slot }}
+                </div>
             </div>
         </div>
         @env('local')

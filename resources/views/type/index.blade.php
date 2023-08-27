@@ -11,6 +11,7 @@
                     <tr>
                         <th>No.</th>
                         <th>Nama Sifat Surat</th>
+                        <th>Jumlah Surat</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -19,13 +20,14 @@
                         <tr>
                             <td>{{ ++$no }}</td>
                             <td>{{ $item->name }}</td>
+                            <td>{{ $item->documents->count() }} Arsip</td>
                             <td>
                                 <div class="d-inline-flex gap-3">
                                     @include('type.update')
                                     <form action="/type/{{ $item->slug }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i>
+                                        <button type="submit" class="btn btn-sm btn-danger">
                                             Hapus</button>
                                     </form>
                                 </div>

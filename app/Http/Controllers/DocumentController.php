@@ -8,8 +8,6 @@ use ZipArchive;
 
 class DocumentController extends Controller
 {
-
-
     function backup()
     {
         $storagePath = storage_path('app');

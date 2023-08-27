@@ -13,7 +13,7 @@
                     <div class="col-md">
                         <div class="form-group">
                             <label for="category_id">Jenis surat</label>
-                            <select class="form-select form-select" name="category_id" id="category_id" disabled>
+                            <select class="form-select form-select" name="category_id" id="category_id">
                                 @foreach ($category as $item)
                                     <option value="{{ $item->id }}"
                                         {{ $document->category->id == $item->id ? 'selected' : '' }}>

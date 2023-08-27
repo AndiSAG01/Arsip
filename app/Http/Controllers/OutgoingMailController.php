@@ -20,22 +20,24 @@ class OutgoingMailController extends Controller
         return view('OutgoingMail.index', [
             'category' => Category::get(),
             'type' => Type::get(),
-            'documents' => Document::where('category_id', 2)->get()
+            'documents' => Document::where('direction', 0)->get()
         ]);
     }
 
     function store(DocumentRequest $request)
     {
+        // dd($request->all());
         $file = $request->file('file');
         $fileName = time() . '_' . $file->getClientOriginalName();
         $filePath = $file->storeAs('documents', $fileName, 'public');
 
         Document::create([
-            'category_id' => 2,
+            'category_id' => $request->category_id,
             'type_id' => $request->type_id,
             'name' => '002/SK/'.$request->type_id.Carbon::now()->format('dmy'),
             'code' => '002/SK/'.$request->type_id.Carbon::now()->format('dmy'),
             'from' => $request->from,
+            'direction' => 0,
             'description' => $request->description,
             'file' => $filePath,
             'slug' => Str::slug('002 SM '.$request->type_id.Carbon::now()->format('dmy'))
@@ -55,13 +57,8 @@ class OutgoingMailController extends Controller
         ]);
     }
 
-    function update($id, Request $request)
+    function update($id, DocumentRequest $request)
     {
-        $request->validate([
-            'type_id' => 'integer|required',
-            'from' => 'string|required|min:6',
-            'description' => 'string|min:5|required',
-        ]);
         $document = Document::find($id);
         if ($request->hasFile('file')) {
             $file = $request->file('file');
@@ -71,7 +68,8 @@ class OutgoingMailController extends Controller
             Storage::disk('public')->delete($document->file);
             $document->file = $filePath;
         }
-            $document->category_id = 2;
+            $document->category_id = $request->category_id;
+            $document->direction = 0;
             $document->type_id = $request->type_id;
             $document->name = '002/SK/'.$request->type_id.Carbon::now()->format('dmy');
             $document->code = '002/SK/'.$request->type_id.Carbon::now()->format('dmy');

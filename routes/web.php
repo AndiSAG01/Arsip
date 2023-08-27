@@ -26,7 +26,7 @@ use App\Http\Controllers\TypeController;
 
 Auth::routes();
 
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
     route::get('/user', [UserController::class, 'index']);
@@ -52,8 +52,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::put('/{id}', [IncomingMailController::class, 'update'])->name('surat-masuk.update');
         Route::delete('/{id}', [IncomingMailController::class, 'destroy'])->name('surat-masuk.destroy');
         Route::get('/{id}/download', [IncomingMailController::class, 'download'])->name('surat-masuk.download');
-
     });
+
     Route::prefix('surat-keluar')->group(function () {
         route::get('/', [OutgoingMailController::class, 'index'])->name('surat-keluar.index');
         route::post('/', [OutgoingMailController::class, 'store'])->name('surat-keluar.store');
@@ -61,16 +61,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::put('/{id}', [OutgoingMailController::class, 'update'])->name('surat-keluar.update');
         Route::delete('/{id}', [OutgoingMailController::class, 'destroy'])->name('surat-keluar.destroy');
         Route::get('/{id}/download', [OutgoingMailController::class, 'download'])->name('surat-keluar.download');
-
     });
-    // route::get('/document', [DocumentController::class, 'index']);
-    // route::post('/document', [DocumentController::class, 'store']);
-    // Route::get('/document/{slug}/edit', [DocumentController::class, 'edit']);
-    // Route::put('/document/{id}', [DocumentController::class, 'update']);
-    // Route::delete('/document/{slug}', [DocumentController::class, 'destroy']);
-    // Route::get('/document/{slug}/download', [DocumentController::class, 'download']);
-    Route::get('/backup', [DocumentController::class, 'backup']);
 
+    Route::get('/backup', [DocumentController::class, 'backup']);
     Route::get('reportUser', [ReportController::class, 'index']);
     Route::get('reportDocument', [ReportController::class, 'document']);
 
@@ -78,7 +71,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/{slug}/profile', [ProfileController::class, 'index'])->name('profile.index');
         Route::put('/{id}', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/{id}', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
     });
 
 });

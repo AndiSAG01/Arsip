@@ -18,6 +18,7 @@ class Document extends Model
         'file',
         'slug',
         'from',
+        'direction',
     ];
 
     /**

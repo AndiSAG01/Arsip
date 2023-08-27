@@ -19,18 +19,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(TypeSeeder::class);
-        Category::insert([
-            [
-                'name' => 'Surat Masuk',
-                'slug' => Str::slug('Surat Masuk'),
-            ],
-            [
-                'name' => 'Surat Keluar',
-                'slug' => Str::slug('Surat Keluar'),
-            ],
+        $this->call([
+            TypeSeeder::class,
+            CategorySeeder::class,
         ]);
-
+    
         User::insert([
            [
             'name' => 'kepala',

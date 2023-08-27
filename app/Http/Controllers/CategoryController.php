@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('category.index', [
-            'categories' => category::latest()->get()
+            'categories' => Category::with('Documents')->latest()->get()
         ]);
     }
 

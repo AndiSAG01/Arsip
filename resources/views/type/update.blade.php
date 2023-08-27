@@ -1,6 +1,6 @@
     <!-- Button trigger for basic modal -->
     <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#{{ $item->slug }}">
-        <i class="bi bi-pencil-square"></i>
+
         Ubah
     </button>
 
@@ -12,7 +12,7 @@
                 <div class="modal-body">
                     <h6 class="text-center">Ubah Jenis Surat</h6>
                     <hr>
-                    <form action="{{ route('type.update', $item->slug ) }}" method="post">
+                    <form action="{{ route('type.update', $item->slug) }}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="modal-body">

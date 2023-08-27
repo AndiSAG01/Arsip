@@ -1,6 +1,6 @@
     <!-- Button trigger for basic modal -->
     <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#{{ $item->slug }}">
-        <i class="bi bi-pencil-square"></i>
+
         Ubah
     </button>
 

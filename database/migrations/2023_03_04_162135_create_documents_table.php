@@ -21,6 +21,7 @@ class CreateDocumentsTable extends Migration
             $table->string('name')->nullable();
             $table->string('slug');
             $table->string('from');
+            $table->boolean('direction');
             $table->longText('description');
             $table->string('file');
             $table->timestamps();

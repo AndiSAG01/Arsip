@@ -20,14 +20,17 @@
                         <div class="row">
                             <div class="col-md">
                                 <div class="form-group">
-                                    <label for="type_id">Sifat surat</label>
-                                    <select class="form-select form-select" name="type_id" id="type_id" required>
-                                        <option selected value="">Pilih satu sifat surat</option>
-                                        @foreach ($type as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    <label for="category_id">Jenis surat</label>
+                                    <select class="form-select form-select" name="category_id" id="category_id">
+                                        <option selected value="">Pilih satu jenis surat</option>
+                                        @foreach ($category as $item)
+                                            <option value="{{ $item->id }}"
+                                                {{ old('category_id') == $item->id ? 'selected' : '' }}>
+                                                {{ $item->name }}
+                                            </option>
                                         @endforeach
                                     </select>
-                                    @error('type_id')
+                                    @error('category_id')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -46,10 +49,16 @@
                         <div class="row">
                             <div class="col-md">
                                 <div class="form-group">
-                                    <label for="code">Nomor surat</label>
-                                    <input type="text" class="form-control" value="{{ old('code') }}"
-                                        name="code" id="code" placeholder="Masukkan nomor surat">
-                                    @error('code')
+                                    <label for="type_id">Sifat surat</label>
+                                    <select class="form-select form-select" name="type_id" id="type_id" required>
+                                        <option selected value="">Pilih satu sifat surat</option>
+                                        @foreach ($type as $item)
+                                            <option value="{{ $item->id }}"
+                                                {{ old('type_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('type_id')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -57,7 +66,7 @@
                             <div class="col-md">
                                 <div class="form-group">
                                     <label for="file">File surat</label>
-                                    <input type="file" class="form-control" name="file" id="file">
+                                    <input type="file" class="form-control" name="file" id="file" required>
                                     @error('file')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -66,7 +75,7 @@
                             <div class="form-group">
                                 <label for="description">Perihal</label>
                                 <textarea class="form-control" name="description" id="description" rows="3" value="{{ old('description') }}"
-                                    placeholder="Masukkan keterangan atau deskripsi surat"></textarea>
+                                    placeholder="Masukkan keterangan atau deskripsi surat">{{ old('description') }}</textarea>
                                 @error('description')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror

@@ -24,10 +24,10 @@ class DocumentRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'string|required|min:6',
+            'category_id' => 'required',
+            'type_id' => 'required',
             'from' => 'string|required|min:3',
             'description' => 'string|min:5|required',
-            'file' => 'required',
         ];
     }
 }
