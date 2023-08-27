@@ -1,9 +1,0 @@
-# Mengabaikan semua file dan direktori di akar repositori
-*
-# Kecuali direktori storage dan isinya
-!storage/
-!storage/*
-# Mengabaikan semua file dan direktori di storage
-storage/*
-# Kecuali file-file backup yang berakhir dengan .zip
-!storage/*.zip
