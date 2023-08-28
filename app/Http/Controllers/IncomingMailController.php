@@ -32,8 +32,8 @@ class IncomingMailController extends Controller
         Document::create([
             'category_id' => $request->category_id,
             'type_id' => $request->type_id,
-            'name' => '001/SM/'.$request->type_id.Carbon::now()->format('dmy'),
-            'code' => '001/SM/'.$request->type_id.Carbon::now()->format('dmy'),
+            'name' => now()->format('dmy').'/SM/'.$request->type_id.Carbon::now()->getTimestamp(),
+            'code' => now()->format('dmy').'/SM/'.$request->type_id.Carbon::now()->getTimestamp(),
             'from' => $request->from,
             'direction' => 1,
             'description' => $request->description,
@@ -69,11 +69,11 @@ class IncomingMailController extends Controller
             $document->category_id = $request->category_id;
             $document->type_id = $request->type_id;
             $document->direction = 1;
-            $document->name = '001/SM/'.$request->type_id.Carbon::now()->format('dmy');
-            $document->code = '001/SM/'.$request->type_id.Carbon::now()->format('dmy');
+            $document->name = now()->format('dmy').'/SM/'.$request->type_id.Carbon::now()->getTimestamp();
+            $document->code = now()->format('dmy').'/SM/'.$request->type_id.Carbon::now()->getTimestamp();
             $document->from = $request->from;
             $document->description = $request->description;
-            $document->slug = Str::slug('001/SM/'.$request->type_id.Carbon::now()->format('dmy'));
+            $document->slug = Str::slug(now()->format('dmy').'/SM/'.$request->type_id.Carbon::now()->getTimestamp());
             $document->save();
 
         return redirect()->route('surat-masuk.index')->with('success', 'Arsip '.$document->name.' telah terupdate dengan data yang baru.');

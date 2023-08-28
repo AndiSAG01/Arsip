@@ -15,52 +15,61 @@
                             <div
                                 class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
                                 <div class="user-profile-info">
-                                    <h4>{{ auth()->user()->name }}</h4>
+                                    <h4 class="text-uppercase">{{ auth()->user()->name }}</h4>
                                     <div class="row">
                                         <ol class="list-group list-group-numbered">
                                             <div class="col-md">
-                                                <li
-                                                    class="list-group-item d-flex justify-content-between align-items-start border-0">
-                                                    <div class="ms-2 me-auto">
-                                                        <div class="fw-bold">Email</div>
-                                                        {{ Auth()->user()->email }}
+                                                <div class="row">
+                                                    <div class="col-md">
+                                                        <li
+                                                            class="list-group-item d-flex justify-content-between align-items-start border-0">
+                                                            <div class="ms-2 me-auto">
+                                                                <div class="fw-bold text-uppercase">Email</div>
+                                                                {{ Auth()->user()->email }}
+                                                            </div>
+                                                        </li>
+                                                        <li
+                                                            class="list-group-item d-flex justify-content-between align-items-start border-0">
+                                                            <div class="ms-2 me-auto">
+                                                                <div class="fw-bold text-uppercase">NIK (Nomor Induk
+                                                                    Kependudukan)
+                                                                </div>
+                                                                {{ Auth()->user()->nik }}
+                                                            </div>
+                                                        </li>
+                                                        <li
+                                                            class="list-group-item d-flex justify-content-between align-items-start border-0">
+                                                            <div class="ms-2 me-auto">
+                                                                <div class="fw-bold text-uppercase">NIP (Nomor Induk
+                                                                    Pegawai)</div>
+                                                                {{ Auth()->user()->nip }}
+                                                            </div>
+                                                        </li>
                                                     </div>
-                                                </li>
-                                                <li
-                                                    class="list-group-item d-flex justify-content-between align-items-start border-0">
-                                                    <div class="ms-2 me-auto">
-                                                        <div class="fw-bold">NIK (Nomor Induk Kependudukan)</div>
-                                                        {{ Auth()->user()->nik }}
+                                                    <div class="col-md">
+                                                        <li
+                                                            class="list-group-item d-flex justify-content-between align-items-start border-0">
+                                                            <div class="ms-2 me-auto">
+                                                                <div class="fw-bold text-uppercase">Alamat</div>
+                                                                {{ Auth()->user()->address }}
+                                                            </div>
+                                                        </li>
+                                                        <li
+                                                            class="list-group-item d-flex justify-content-between align-items-start border-0">
+                                                            <div class="ms-2 me-auto">
+                                                                <div class="fw-bold text-uppercase">Telp</div>
+                                                                {{ Auth()->user()->telp }}
+                                                            </div>
+                                                        </li>
+                                                        <li
+                                                            class="list-group-item d-flex justify-content-between align-items-start border-0">
+                                                            <div class="ms-2 me-auto">
+                                                                <div class="fw-bold text-uppercase">Tanggal Lahir</div>
+                                                                {{ Carbon\Carbon::parse(Auth()->user()->birthday)->format('d M Y') }}
+                                                            </div>
+                                                        </li>
                                                     </div>
-                                                </li>
-                                                <li
-                                                    class="list-group-item d-flex justify-content-between align-items-start border-0">
-                                                    <div class="ms-2 me-auto">
-                                                        <div class="fw-bold">NIP (Nomor Induk Pegawai)</div>
-                                                        {{ Auth()->user()->nip }}
-                                                    </div>
-                                                </li>
-                                                <li
-                                                    class="list-group-item d-flex justify-content-between align-items-start border-0">
-                                                    <div class="ms-2 me-auto">
-                                                        <div class="fw-bold">Alamat</div>
-                                                        {{ Auth()->user()->address }}
-                                                    </div>
-                                                </li>
-                                                <li
-                                                    class="list-group-item d-flex justify-content-between align-items-start border-0">
-                                                    <div class="ms-2 me-auto">
-                                                        <div class="fw-bold">Telp</div>
-                                                        {{ Auth()->user()->telp }}
-                                                    </div>
-                                                </li>
-                                                <li
-                                                    class="list-group-item d-flex justify-content-between align-items-start border-0">
-                                                    <div class="ms-2 me-auto">
-                                                        <div class="fw-bold">Tanggal Lahir</div>
-                                                        {{ Carbon\Carbon::parse(Auth()->user()->birthday)->format('d M Y') }}
-                                                    </div>
-                                                </li>
+                                                </div>
                                             </div>
                                         </ol>
                                     </div>
@@ -88,8 +97,8 @@
                                     <label for="name" class="form-label">Nama</label>
                                     <input
                                         class="form-control @error('name')
-                                    invalid
-                                    @enderror"
+                invalid
+                @enderror"
                                         type="text" id="name" value="{{ auth()->user()->name }}" name="name">
                                     @error('name')
                                         <small class="text-danger fw-bold">{{ $message }}</small>
@@ -99,8 +108,8 @@
                                     <label for="email" class="form-label">Email</label>
                                     <input
                                         class="form-control @error('email')
-                                    invalid
-                                    @enderror"
+                invalid
+                @enderror"
                                         type="email" id="email" value="{{ auth()->user()->email }}"
                                         name="email">
                                     @error('email')
@@ -111,8 +120,8 @@
                                     <label for="telp" class="form-label">Telp</label>
                                     <input
                                         class="form-control @error('telp')
-                                    invalid
-                                    @enderror"
+                invalid
+                @enderror"
                                         type="number" id="telp" value="{{ auth()->user()->telp }}"
                                         name="telp">
                                     @error('telp')
@@ -123,8 +132,8 @@
                                     <label for="birthday" class="form-label">Tanggal Lahir</label>
                                     <input
                                         class="form-control @error('birthday')
-                                    invalid
-                                    @enderror"
+                invalid
+                @enderror"
                                         type="date" id="birthday" value="{{ auth()->user()->birthday }}"
                                         name="birthday">
                                     @error('birthday')
@@ -135,8 +144,8 @@
                                     <label for="nik" class="form-label">NIK (Nomor Induk Kependudukan)</label>
                                     <input
                                         class="form-control @error('nik')
-                                    invalid
-                                    @enderror"
+                invalid
+                @enderror"
                                         type="number" id="nik" value="{{ auth()->user()->nik }}" name="nik">
                                     @error('nik')
                                         <small class="text-danger fw-bold">{{ $message }}</small>
@@ -146,9 +155,10 @@
                                     <label for="nip" class="form-label">NIP (Nomor Induk Pegawai)</label>
                                     <input
                                         class="form-control @error('nip')
-                                    invalid
-                                    @enderror"
-                                        type="number" id="nip" value="{{ auth()->user()->nip }}" name="nip">
+                invalid
+                @enderror"
+                                        type="number" id="nip" value="{{ auth()->user()->nip }}"
+                                        name="nip">
                                     @error('nip')
                                         <small class="text-danger fw-bold">{{ $message }}</small>
                                     @enderror
@@ -156,11 +166,10 @@
                             </div>
                             <div class="mb-3">
                                 <label for="address" class="form-label">Alamat</label>
-                                <textarea
-                                    class="form-control @error('address')
-                                invalid
-                                @enderror"
-                                    name="address" id="address" rows="3">{{ Auth()->user()->address }}</textarea>
+                                <textarea class="form-control @error('address')
+            invalid
+            @enderror" name="address"
+                                    id="address" rows="3">{{ Auth()->user()->address }}</textarea>
 
                                 @error('address')
                                     <small class="text-danger fw-bold">{{ $message }}</small>
@@ -174,35 +183,39 @@
                     </div>
                     <!-- /Account -->
                 </div>
-                <div class="card">
-                    <h5 class="card-header">Hapus Akun</h5>
-                    <div class="card-body">
-                        <div class="mb-3 col-12 mb-0">
-                            <div class="alert alert-warning">
-                                <h6 class="alert-heading fw-medium mb-1">Apakah Anda yakin ingin menghapus akun Anda?
-                                </h6>
-                                <p class="mb-0">Setelah akun Anda dihapus, tidak ada cara untuk memulihkannya. Mohon
-                                    diperhatikan.</p>
-                            </div>
-                        </div>
-                        <form action="{{ route('profile.destroy', Auth()->user()->id) }}" class="form-input"
-                            method="POST">
-                            @csrf
-                            @method('delete')
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" name="confirmAccount"
-                                    id="confirmAccount" required>
-                                <label class="form-check-label" for="confirmAccount">Saya mengonfirmasi akun saya
-                                    dihapus</label>
-                                <div
-                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                @if (Auth()->user()->isAdmin == 1)
+                    <div class="card">
+                        <h5 class="card-header">Hapus Akun</h5>
+                        <div class="card-body">
+                            <div class="mb-3 col-12 mb-0">
+                                <div class="alert alert-warning">
+                                    <h6 class="alert-heading fw-medium mb-1">Apakah Anda yakin ingin menghapus akun
+                                        Anda?
+                                    </h6>
+                                    <p class="mb-0">Setelah akun Anda dihapus, tidak ada cara untuk memulihkannya.
+                                        Mohon
+                                        diperhatikan.</p>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-danger">Hapus Akun</button>
-                            <input type="hidden">
-                        </form>
+                            <form action="{{ route('profile.destroy', Auth()->user()->id) }}" class="form-input"
+                                method="POST">
+                                @csrf
+                                @method('delete')
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" name="confirmAccount"
+                                        id="confirmAccount" required>
+                                    <label class="form-check-label" for="confirmAccount">Saya mengonfirmasi akun saya
+                                        dihapus</label>
+                                    <div
+                                        class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-danger">Hapus Akun</button>
+                                <input type="hidden">
+                            </form>
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
 
