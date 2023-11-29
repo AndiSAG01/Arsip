@@ -35,6 +35,6 @@
                 Keep me logged in
             </label>
         </div>
-        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-4" type="submit">Log in</button>
+        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-4" type="submit">Login</button>
     </form>
 </x-auth>
